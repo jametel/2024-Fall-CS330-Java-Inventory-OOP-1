@@ -46,7 +46,14 @@ public class Armour extends Item {
      */
     public Armour()
     {
-        // Initialize all data members (including those inherited from Item)
+        super.name = "";
+        super.stackable = false;
+        durability = 0;
+        defense = 0;
+        material = "";
+        modifier = "";
+        modiferLevel = 0;
+        element = "";
     }
 
     /**
@@ -56,7 +63,14 @@ public class Armour extends Item {
      */
     public Armour(Armour src)
     {
-        // Set and/or copy data members for *this* object based on *src*.
+        super.name = src.getName();
+        super.stackable = false;
+        durability = src.getDurability();
+        defense = src.getDefense();
+        material = src.getMaterial();
+        modifier = src.getModifier();
+        modiferLevel = src.getModifierLevel();
+        element = src.getElement();
     }
 
     /**
@@ -189,9 +203,13 @@ public class Armour extends Item {
     @Override
     public void read(Scanner snr)
     {
-        super.name   = snr.next();
-
-        // Complete this method
+        super.name = snr.next();
+        material = snr.next();
+        durability = snr.nextInt();
+        defense = snr.nextInt();
+        modifier = snr.next();
+        modiferLevel = snr.nextInt();
+        element = snr.next();
     }
 
     /**
@@ -200,8 +218,8 @@ public class Armour extends Item {
     @Override
     public Item clone()
     {
-        // Replace the next line
-        return null;
+        Armour cln = new Armour(this);
+        return cln;
     }
 
     /**
@@ -210,10 +228,13 @@ public class Armour extends Item {
     @Override
     public String toString()
     {
-        return "Implement This Function";
+        String str = "  Nme: " + name + "\n"
+                + "  Dur: " + durability + "\n"
+                + "  Def: " + defense + "\n"
+                + "  Mtl: " + material + "\n"
+                + "  Mdr: " + modifier + " (Lvl " + modiferLevel + ")\n"
+                + "  Emt: " + element + "\n";
+
+        return str;
     }
 }
-
-
-
-
